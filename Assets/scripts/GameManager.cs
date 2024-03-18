@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     private SpriteRenderer playerSpriteRenderer;
     private PlayerController playerController;
+    public GameObject interactionManager;
 
     //sets default state for the game manager
     public void Awake()
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
             //turning on player
             playerSpriteRenderer.enabled = true;
             playerController.enabled = true;
+            interactionManager.SetActive(true);
 
             SpawnPlayer();
         }
@@ -93,6 +95,7 @@ public class GameManager : MonoBehaviour
             //turning off player
             playerSpriteRenderer.enabled = false;
             playerController.enabled = false;
+            interactionManager.SetActive(false);
 
             //reset player position
             player.transform.position = Vector3.zero;
@@ -199,6 +202,7 @@ public class GameManager : MonoBehaviour
         //turning off player
         playerSpriteRenderer.enabled = false;
         playerController.enabled = false;
+        interactionManager.SetActive(false);
     }
 
     private void UpdateMainMenuState()
@@ -220,6 +224,7 @@ public class GameManager : MonoBehaviour
             //turning on player
             playerSpriteRenderer.enabled = true;
             playerController.enabled = true;
+            interactionManager.SetActive(true);
         }
         else
         {
