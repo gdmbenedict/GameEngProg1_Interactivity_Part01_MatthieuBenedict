@@ -13,6 +13,7 @@ public class InteractionManager : MonoBehaviour
 
     [Header("Text References")]
     [SerializeField] private float fadeTime = 5f;
+    [SerializeField] private float fadeDelay = 1f;
     [SerializeField] private float textSize = 3f;
     [SerializeField] private Color textColor = Color.black;
     [SerializeField] private TextAlignmentOptions textAlignment = TextAlignmentOptions.Center;
@@ -126,6 +127,8 @@ public class InteractionManager : MonoBehaviour
     IEnumerator FadeMessage(TextMeshPro message)
     {
         float a = 1;
+
+        yield return new WaitForSeconds(fadeDelay);
 
         while (a > 0f)
         {

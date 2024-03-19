@@ -26,8 +26,6 @@ public class InteractableObject : MonoBehaviour
 
     private void Awake()
     {
-        prompt = GetComponent<TextMeshPro>();
-
         if (hasPrompt)
         {
             //set prompt settings
@@ -79,8 +77,8 @@ public class InteractableObject : MonoBehaviour
         {
             case InteractionType.pickup:
 
-                message = "Picked up " + name; //ma
-                DelayedDestroy();
+                message = "Picked up a " + name; //ma
+                StartCoroutine(DelayedDestroy());
                 break;
 
             case InteractionType.info:
@@ -93,7 +91,15 @@ public class InteractableObject : MonoBehaviour
 
     IEnumerator DelayedDestroy()
     {
-        yield return null;
+        bool firstTime = true;
+        Debug.Log("Desstroy reached");
+        if (firstTime)
+        {
+            firstTime = false;
+            yield return null;
+        }
+
+        
         Destroy(gameObject);
     }
 
